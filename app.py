@@ -3,6 +3,7 @@ import pickle
 from flask import Flask,request,app,jsonify,url_for,render_template
 import numpy as np
 import pandas as pd
+import math
 
 app=Flask(__name__)
 ## Load the model
@@ -28,8 +29,8 @@ def predict_api():
 def predict():
     data=[float(x) for x in request.form.values()]
     final_input=scaler.transform(np.array(data).reshape(1,-1))
-    output=regmodel.predict(final_input)[0]
-    return render_template("home.html",prediction_text="The House price prediction is {}".format(output))
+    output=math.floor(regmodel.predict(final_input)[0])
+    return render_template("home.html",prediction_text="The House price prediction is {} Lakhs".format(output))
 
 if __name__=="__main__":
     app.run(debug=True)

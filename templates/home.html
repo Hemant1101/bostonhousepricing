@@ -23,6 +23,11 @@
       rel="stylesheet"
       type="text/css"
     />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ url_for('static',filename='styles.css') }}"
+    />
   </head>
 
   <body>
@@ -30,78 +35,83 @@
       <h1>Boston House Price Prediction</h1>
 
       <!-- Main Input For Receiving Query to our ML -->
-      <form action="{{ url_for('predict')}}" method="post">
+      <form class="form" action="{{ url_for('predict')}}" method="post">
         <input
           type="text"
           name="CRIM"
-          placeholder="CRIM"
+          placeholder="CRIM   0 to 1"
           required="required"
-        /><br />
+        />
         <input
           type="text"
           name="ZN"
-          placeholder="ZN"
+          placeholder="ZN   0 to 100"
           required="required"
-        /><br />
+        />
         <input
           type="text"
           name="INDUS"
-          placeholder="INDUS"
+          placeholder="INDUS   0 to 10"
           required="required"
-        /><br />
+        />
         <input
           type="text"
           name="CHAS"
-          placeholder="CHAS"
+          placeholder="CHAS   0 or 1"
           required="required"
-        /><br />
+        />
         <input
           type="text"
           name="NOX"
-          placeholder="NOX"
+          placeholder="NOX   0 to 1"
           required="required"
-        /><br />
+        />
         <input
           type="text"
           name="RM"
-          placeholder="RM"
+          placeholder="RM   1 to 10"
           required="required"
-        /><br />
+        />
         <input
           type="text"
           name="Age"
-          placeholder="Age"
+          placeholder="Age   1 to 100"
           required="required"
-        /><br />
+        />
         <input
           type="text"
           name="DIS"
-          placeholder="DIS"
+          placeholder="DIS   1 to 10"
           required="required"
-        /><br />
+        />
         <input
           type="text"
           name="RAD"
-          placeholder="RAD"
+          placeholder="RAD   1 to 10"
           required="required"
-        /><br />
+        />
         <input
           type="text"
           name="TAX"
-          placeholder="TAX"
+          placeholder="TAX   100 to 1000"
           required="required"
-        /><br />
+        />
         <input
           type="text"
           name="PTRATIO"
-          placeholder="PTRATIO"
+          placeholder="PTRATIO    1 to 100"
+          required="required"
+        />
+        <input
+          type="text"
+          name="B"
+          placeholder="B   100 to 1000"
           required="required"
         /><br />
-        <input type="text" name="B" placeholder="B" required="required" /><br />
         <input
           type="text"
           name="LSTAT"
-          placeholder="LSTAT"
+          placeholder="LSTAT   1 to 10"
           required="required"
         /><br />
 
@@ -111,8 +121,8 @@
       </form>
 
       <br />
+      <div>{{prediction_text}}</div>
       <br />
     </div>
-    {{prediction_text}}
   </body>
 </html>
